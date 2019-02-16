@@ -1,0 +1,13 @@
+.idea/
+Jekoss.Implementations/bin/
+Jekoss.Implementations/obj/
+Jekoss.Interfaces/bin/
+Jekoss.Interfaces/obj/
+JekossServices/obj/
+JekossTest.Dal/JekossTest.Dal/bin/
+JekossTest.Dal/JekossTest.Dal/obj/
+JekossTest.Host/.vs/
+JekossTest.Host/bin/
+JekossTest.Host/obj/
+JekossTest.Models/bin/
+JekossTest.Models/obj/

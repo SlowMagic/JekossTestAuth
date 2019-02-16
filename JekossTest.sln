@@ -1,0 +1,49 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JekossTest.Host", "JekossTest.Host\JekossTest.Host.csproj", "{0065F4CC-02D1-47E1-BA5E-DCCC70DBD760}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JekossTest.DAL", "JekossTest.DAL", "{C5A6302B-949C-4645-884D-21F801F9C10B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JekossTest.Dal", "JekossTest.Dal\JekossTest.Dal\JekossTest.Dal.csproj", "{796E53D1-F6B4-4461-BDB2-7E77A3E13E65}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JekossTest.Infustructure", "JekossTest.Infustructure", "{7B256FB0-ACCD-4FC7-AC82-EEF03CD93415}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jekoss.Interfaces", "Jekoss.Interfaces\Jekoss.Interfaces.csproj", "{03884D00-A471-4E35-865C-B7ADF2161164}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Jekoss.Implementations", "Jekoss.Implementations\Jekoss.Implementations.csproj", "{1F947367-5EFA-47C5-8015-5997ABEF1F05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JekossTest.Models", "JekossTest.Models\JekossTest.Models.csproj", "{25730121-7CD0-49D7-8BB1-B3C17E2DEC5D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0065F4CC-02D1-47E1-BA5E-DCCC70DBD760}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0065F4CC-02D1-47E1-BA5E-DCCC70DBD760}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0065F4CC-02D1-47E1-BA5E-DCCC70DBD760}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0065F4CC-02D1-47E1-BA5E-DCCC70DBD760}.Release|Any CPU.Build.0 = Release|Any CPU
+		{796E53D1-F6B4-4461-BDB2-7E77A3E13E65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{796E53D1-F6B4-4461-BDB2-7E77A3E13E65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{796E53D1-F6B4-4461-BDB2-7E77A3E13E65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{796E53D1-F6B4-4461-BDB2-7E77A3E13E65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{03884D00-A471-4E35-865C-B7ADF2161164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03884D00-A471-4E35-865C-B7ADF2161164}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03884D00-A471-4E35-865C-B7ADF2161164}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03884D00-A471-4E35-865C-B7ADF2161164}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F947367-5EFA-47C5-8015-5997ABEF1F05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F947367-5EFA-47C5-8015-5997ABEF1F05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F947367-5EFA-47C5-8015-5997ABEF1F05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F947367-5EFA-47C5-8015-5997ABEF1F05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25730121-7CD0-49D7-8BB1-B3C17E2DEC5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25730121-7CD0-49D7-8BB1-B3C17E2DEC5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25730121-7CD0-49D7-8BB1-B3C17E2DEC5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25730121-7CD0-49D7-8BB1-B3C17E2DEC5D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{796E53D1-F6B4-4461-BDB2-7E77A3E13E65} = {C5A6302B-949C-4645-884D-21F801F9C10B}
+		{03884D00-A471-4E35-865C-B7ADF2161164} = {7B256FB0-ACCD-4FC7-AC82-EEF03CD93415}
+		{1F947367-5EFA-47C5-8015-5997ABEF1F05} = {7B256FB0-ACCD-4FC7-AC82-EEF03CD93415}
+	EndGlobalSection
+EndGlobal
