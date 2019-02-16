@@ -1,4 +1,5 @@
 using System.Net;
+using JekossTest.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -10,13 +11,10 @@ namespace JekossTest.Controllers
     public class UserController : BaseController
     {
         
-        public JsonResult Get()
+        public BaseResponse<CurrentUserModel> Get()
         {
-            dynamic MyDynamic = new System.Dynamic.ExpandoObject();
-            MyDynamic.A = "A";
-            MyDynamic.B = "B";
-            MyDynamic.C = "C";
-            return  new JsonResult( MyDynamic);
+            var user = CurrentUser;
+            return  new BaseResponse<CurrentUserModel>(true,"",CurrentUser);
         }
         
     }

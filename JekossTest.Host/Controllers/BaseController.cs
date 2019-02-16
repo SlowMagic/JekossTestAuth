@@ -23,7 +23,7 @@ namespace JekossTest.Controllers
                         FirstName = User.Claims.First(x => x.Type == UserBaseClaims.FirstName).Value,
                         LastName = User.Claims.First(x => x.Type == UserBaseClaims.LastName).Value,
                         Id = int.Parse(User.Claims.First(x => x.Type == UserBaseClaims.Id).Value),
-                        RoleId = int.Parse(User.Claims.First(x=>x.Type == ClaimsIdentity.DefaultRoleClaimType).Value)
+//                        RoleId = int.Parse(User.Claims.First(x=>x.Type == ClaimsIdentity.DefaultRoleClaimType).Value)
                     };
                 }
                 return null;

@@ -11,3 +11,6 @@ JekossTest.Host/bin/
 JekossTest.Host/obj/
 JekossTest.Models/bin/
 JekossTest.Models/obj/
+JekossTest.Dal/JekossTest.Dal/Migrations/TestDbContextModelSnapshot.cs
+JekossTest.Dal/JekossTest.Dal/Migrations/20190216151736_InitialCreate.cs
+JekossTest.Dal/JekossTest.Dal/Migrations/20190216151736_InitialCreate.Designer.cs

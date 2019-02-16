@@ -88,29 +88,33 @@ namespace Jekoss.Implementations.Services
         {
             return await ProcessRequestAsync(async () =>
             {
-                var oldClaims =  GetPrincipalFromExpiredToken(model.Token);
-                var userId = int.Parse(oldClaims.First(x => x.Type == UserBaseClaims.Id).Value);
-                var refreshToken = await _context.AccountRefreshTokens.FirstOrDefaultAsync(x => x.UserId == userId && x.RefreshToken == model.RefreshToken);
-                if (refreshToken == null || refreshToken.ExpiredDate < DateTime.Now)
+                if (model.Token != null && model.RefreshToken != null)
                 {
-                    return new BaseResponse<TokenModel>(false,RefreshTokenError){ErrorCode = 401};
+                    var oldClaims =  GetPrincipalFromExpiredToken(model.Token);
+                    var userId = int.Parse(oldClaims.First(x => x.Type == UserBaseClaims.Id).Value);
+                    var refreshToken = await _context.AccountRefreshTokens.FirstOrDefaultAsync(x => x.UserId == userId && x.RefreshToken == model.RefreshToken);
+                    if (refreshToken == null || refreshToken.ExpiredDate < DateTime.Now)
+                    {
+                        return new BaseResponse<TokenModel>(false,RefreshTokenError){ErrorCode = 401};
+                    }
+                    refreshToken.Salt = Guid.NewGuid().ToString("N");        //update salt to remove  token collisions             
+                    refreshToken.GenerateToken();
+                    _context.AccountRefreshTokens.Update(refreshToken);
+                    await _context.SaveChangesAsync();
+                    var jwt = GenerateToken(oldClaims);
+                
+                    model = new TokenModel(new JwtSecurityTokenHandler().WriteToken(jwt), jwt.ValidTo.ToUniversalTime(), refreshToken.RefreshToken);
+                
+                    return new BaseResponse<TokenModel>(true,Success,model);
                 }
-                refreshToken.Salt = Guid.NewGuid().ToString("N");        //update salt to remove  token collisions             
-                refreshToken.GenerateToken();
-                _context.AccountRefreshTokens.Update(refreshToken);
-                await _context.SaveChangesAsync();
-                var jwt = GenerateToken(oldClaims);
-                
-                model = new TokenModel(new JwtSecurityTokenHandler().WriteToken(jwt), jwt.ValidTo.ToUniversalTime(), refreshToken.RefreshToken);
-                
-                return new BaseResponse<TokenModel>(true,Success,model);
+                return new BaseResponse<TokenModel>(false,RefreshTokenError){ErrorCode = 401};
             });
         }
         
         
         private async Task<TokenModel> GetTokenModel(User user)
         {
-            var refreshToken = await _context.AccountRefreshTokens.FirstOrDefaultAsync(x => x.Id == user.Id);
+            var refreshToken = await _context.AccountRefreshTokens.FirstOrDefaultAsync(x => x.UserId == user.Id);
             if (refreshToken != null)
             {
                 _context.AccountRefreshTokens.Remove(refreshToken);
@@ -121,9 +125,15 @@ namespace Jekoss.Implementations.Services
             {
                 Salt = Guid.NewGuid().ToString("N"),
                 ExpiredDate = DateTime.UtcNow.AddDays(7),
-                PrivateToken = Guid.NewGuid().ToString("N")
+                PrivateToken = Guid.NewGuid().ToString("N"),
+                UserId =  user.Id
             };
+            refreshToken.GenerateToken();
+            
             await _context.AccountRefreshTokens.AddAsync(refreshToken);
+            await _context.SaveChangesAsync();
+            user.AccountRefreshTokenId = refreshToken.Id;
+            _context.Users.Update(user);
             await _context.SaveChangesAsync();
             var claims = await GetIdentityClaim(user);
             var encodedJwt = GenerateToken(claims.Claims);
